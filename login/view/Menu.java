@@ -39,7 +39,7 @@ public class Menu {
                 userService.logIn(scanner,users);
                 break;
             case 2:
-                userService.changePassWord(scanner,users);
+                userService.changePassWordWhenForget(scanner,users);
                 break;
         }
 
@@ -59,13 +59,13 @@ public class Menu {
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice){
                 case 1:
-                    userService.changeUserName(users,scanner);
+                    userService.changeUserNameWhenLogIn(users,scanner);
                     break;
                 case 2:
-                    userService.changeEmail(users,scanner);
+                    userService.changeEmailWhenLogIn(users,scanner);
                     break;
                 case 3:
-                    userService.changePassWord(users,scanner);
+                    userService.changePassWordWhenLogIn(users,scanner);
                     break;
                 case 4:
                     selectRegisterMenu(scanner,users);

@@ -99,7 +99,7 @@ public class UserService {
 
     }
 
-    public void changePassWord(Scanner scanner, ArrayList<User> users) {
+    public void changePassWordWhenForget(Scanner scanner, ArrayList<User> users) {
         System.out.println("Mời bạn nhập vào email");
         String email = scanner.nextLine();
         isValid = findUserEmail(users, email);
@@ -152,7 +152,7 @@ public class UserService {
         return user;
     }
 
-    public void changeUserName(ArrayList<User> users, Scanner scanner) {
+    public void changeUserNameWhenLogIn(ArrayList<User> users, Scanner scanner) {
         User existedUser = findUser(users);
         if (existedUser != null) {
             System.out.println("Nhập username mới mà bạn muốn đổi");
@@ -162,7 +162,7 @@ public class UserService {
         }
     }
 
-    public void changePassWord(ArrayList<User> users, Scanner scanner) {
+    public void changePassWordWhenLogIn(ArrayList<User> users, Scanner scanner) {
         User existedUser = findUser(users);
         if (existedUser != null) {
             System.out.println("Nhập password mới mà bạn muốn đổi");
@@ -172,7 +172,7 @@ public class UserService {
         }
     }
 
-    public void changeEmail(ArrayList<User> users, Scanner scanner) {
+    public void changeEmailWhenLogIn(ArrayList<User> users, Scanner scanner) {
         User existedUser = findUser(users);
         if (existedUser != null) {
             System.out.println("Nhập email mới mà bạn muốn đổi");
