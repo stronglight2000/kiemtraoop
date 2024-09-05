@@ -1,6 +1,7 @@
 package login.service;
 
 import login.entities.User;
+import login.utils.Utils;
 import login.view.Menu;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class UserService {
         String username;
         String email;
         String password;
+        Utils utils = new Utils();
         System.out.println("===============ĐĂNG KÝ==================");
         do {
             System.out.println("Mời bạn nhập vào username:");
@@ -33,7 +35,7 @@ public class UserService {
 
             System.out.println("Mời bạn nhập vào email:");
             email = scanner.nextLine();
-            isValid = checkEmail(email);
+            isValid = utils.checkEmail(email);
             duplicateEmail = findUserEmail(users, email);
             if (!isValid || duplicateEmail != null) {
                 System.out.println("Email không hợp lệ hoặc đã tồn tại, mời bạn nhập lại");
@@ -42,7 +44,7 @@ public class UserService {
         do {
             System.out.println("Mời bạn nhập vào password:(password dài từ 7 đến 15 ký tự, chứa ít nhất 1 ký tự in hoa, 1 ký tự đặc biệt)");
             password = scanner.nextLine();
-            isValid = checkPassword(password);
+            isValid = utils.checkPassword(password);
             if (!isValid) {
                 System.out.println("Password không hợp lệ, mời bạn nhập lại");
             }
@@ -55,20 +57,8 @@ public class UserService {
 
     }
 
-    public boolean checkEmail(String email) {
-        String validEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
-        Pattern pattern = Pattern.compile(validEmail);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
 
-    }
 
-    public boolean checkPassword(String password) {
-        String validPassword = "^(?=.*[A-Z])(?=.*[.,-_;])(?=\\S+$).{7,15}$";
-        Pattern pattern = Pattern.compile(validPassword);
-        Matcher matcher = pattern.matcher(password);
-        return matcher.matches();
-    }
 
     public User findUserEmail(ArrayList<User> users, String email) {
         for (User user : users) {
